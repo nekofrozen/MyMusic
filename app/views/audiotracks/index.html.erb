@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Audiotracks</h1>
+
+    <% if @audiotracks.blank? %>
+      <h2>No music created </h2>
+      <br/><br/>
+    <% end %>
+
+    <% @audiotracks.each do |audiotrack| %>
+      <tr>
+        <li><%= link_to audiotrack.name, audiotrack %></li>
+      </tr>
+    <% end %>
+<br>
+
+<%= link_to 'New Music', new_audiotrack_path %>

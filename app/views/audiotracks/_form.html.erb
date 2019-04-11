@@ -1,0 +1,31 @@
+<%= form_with(model: audiotrack, local: true) do |form| %>
+  <% if audiotrack.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(audiotrack.errors.count, "error") %> prohibited this audiotrack from being saved:</h2>
+
+      <ul>
+      <% audiotrack.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      Add an image
+      <%= form.file_field :image, accept: 'image/*' %>
+    </div>
+    <div class="field">
+      Add an Music
+      <%= form.file_field :music, accept: 'audio/*' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>

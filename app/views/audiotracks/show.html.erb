@@ -1,0 +1,13 @@
+<h2><%= @audiotrack.name %></h2>
+
+<%= image_tag @audiotrack.image_url(:thumb) %>
+
+<audio id="<%= @audiotrack.id %>" controls>
+  <source src="<%= @audiotrack.music.url %>"></source>
+</audio>
+
+<br>
+<%= link_to 'Edit', edit_audiotrack_path(@audiotrack) %> |
+<%= link_to 'Destroy', audiotrack_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
+
+<%= link_to 'Back', audiotracks_path %>
