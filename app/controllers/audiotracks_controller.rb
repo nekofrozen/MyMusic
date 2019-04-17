@@ -60,14 +60,7 @@ class AudiotracksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def stream
-    audio = Audiotrack.find(params[:id])
-    if audio
-      send_file audio.path
-    end
-  end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_audiotrack
