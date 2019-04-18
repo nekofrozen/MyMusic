@@ -4,7 +4,11 @@ class AudiotracksController < ApplicationController
   # GET /audiotracks
   # GET /audiotracks.json
   def index
-    @audiotracks = Audiotrack.all
+    if params[:name]
+      @audiotracks = Audiotrack.where('name LIKE ?', "%#{params[:name]}%")
+    else
+      @audiotracks = Audiotrack.all
+    end
   end
 
   # GET /audiotracks/1
@@ -68,7 +72,7 @@ class AudiotracksController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def audiotrack_params
+  def audiotrack_params
       params.require(:audiotrack).permit(:name, :image, :music)
     end
 end

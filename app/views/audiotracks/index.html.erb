@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<%= form_tag(audiotracks_path, method: :get) do %>
+  <%= text_field_tag :name , params[:name]%>
+  <%= submit_tag 'Search',name: nil %>
+<% end %>
+
 <h1>Audiotracks <%= current_user.name if current_user %></h1>
 
     <% if @audiotracks.blank? %>
@@ -9,6 +14,7 @@
 
     <% @audiotracks.each do |audiotrack| %>
       <tr>
+
         <%= link_to (image_tag audiotrack.image_url(:thumb)), audiotrack %>
       </tr>
     <% end %>
