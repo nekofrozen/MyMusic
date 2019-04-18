@@ -1,6 +1,6 @@
 class AudiotracksController < ApplicationController
   before_action :set_audiotrack, only: [:show, :edit, :update, :destroy]
-
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
   # GET /audiotracks
   # GET /audiotracks.json
   def index
@@ -58,13 +58,6 @@ class AudiotracksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to audiotracks_url, notice: 'Audiotrack was successfully destroyed.' }
       format.json { head :no_content }
-    end
-  end
-
-  def stream
-    audio = Audiotrack.find(params[:id])
-    if audio
-      send_file audio.path
     end
   end
 

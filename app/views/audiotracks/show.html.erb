@@ -6,8 +6,7 @@
   <source src="<%= @audiotrack.music.url %>"></source>
 </audio>
 
-<br>
-<%= link_to 'Edit', edit_audiotrack_path(@audiotrack) %> |
-<%= link_to 'Destroy', audiotrack_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
-
+<br><hr><br>
+<%= link_to 'Edit', edit_audiotrack_path(@audiotrack) if logged_in?(:site_admin)%>
+<%= link_to 'Destroy', audiotrack_path, method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin)%>
 <%= link_to 'Back', audiotracks_path %>
