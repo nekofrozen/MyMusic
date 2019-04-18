@@ -1,6 +1,6 @@
 class AudiotracksController < ApplicationController
   before_action :set_audiotrack, only: [:show, :edit, :update, :destroy]
-
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
   # GET /audiotracks
   # GET /audiotracks.json
   def index
