@@ -12,7 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+.idea/workspace.xml
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
@@ -21,6 +21,9 @@
 /yarn-error.log
 
 /public/assets
+/public/tmp/*
+/public/image
+/public/music
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
