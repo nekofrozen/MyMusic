@@ -1,0 +1,24 @@
+
+
+
+<% @playlist.each do |playlist| %>
+  <h2><% audiotrack = playlist.audiotrack_id %></h2>
+    <% @audiotrack = Audiotrack.find(audiotrack) %>
+
+   <b><%= @audiotrack.name %></b><br>
+  <%= image_tag @audiotrack.image_url(:thumb) %>
+  <audio id="<%= @audiotrack.id %>" controls>
+    <source src="<%= @audiotrack.music.url %>"></source>
+  </audio>
+
+<% end %>
+
+<h2><%= @playlistsong %></h2>
+
+<%= link_to 'Edit', edit_playlist_path(@playlist) %>
+<%= link_to 'Destroy', playlist_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<br>
+
+<%= link_to 'Back', playlists_path %>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_032638) do
+ActiveRecord::Schema.define(version: 2019_04_24_025555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,26 @@ ActiveRecord::Schema.define(version: 2019_04_18_032638) do
     t.string "name"
     t.string "image"
     t.index ["name"], name: "index_audiotracks_on_name"
+  end
+
+  create_table "playlist_songs", force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.bigint "audiotrack_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["audiotrack_id"], name: "index_playlist_songs_on_audiotrack_id"
+    t.index ["playlist_id"], name: "index_playlist_songs_on_playlist_id"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "image"
+    t.integer "current_audio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +63,5 @@ ActiveRecord::Schema.define(version: 2019_04_18_032638) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "playlists", "users"
 end

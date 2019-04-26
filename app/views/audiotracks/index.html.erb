@@ -14,10 +14,17 @@
 
     <% @audiotracks.each do |audiotrack| %>
       <tr>
-
+        <b><%=link_to audiotrack.name , audiotrack%></b><br>
         <%= link_to (image_tag audiotrack.image_url(:thumb)), audiotrack %>
+
+          <audio id="<%= audiotrack.id %>" controls>
+              <source src="<%= audiotrack.music.url %>"></source>
+          </audio>
+        <br>
       </tr>
     <% end %>
 <br>
 
+<%= link_to 'Playlist', playlists_path %>
+<%= link_to 'New Playlist', new_playlist_path, class: 'button small' %>
 <%= link_to 'New Music', new_audiotrack_path if logged_in?(:site_admin)%>

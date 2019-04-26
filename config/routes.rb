@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   resources :audiotracks
   root 'audiotracks#index'
 
+  resources :playlists
+
+  get '/add/:id', to: 'audiotracks#add', as: :add
 
 end
